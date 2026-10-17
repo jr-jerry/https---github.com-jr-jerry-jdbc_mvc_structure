@@ -1,19 +1,23 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Scanner;
+
+import Controller.Controller;
+import Repo.StudentRepo;
+import Repo.StudentRepoImpl;
+import Service.StudentService;
+import Service.StudentServiceImpl;
 
 public class Main {
     public static void main(String[] args) {
-        String URL="jdbc:mysql://localhost:3306/yulia_db";
-        String username="root";
-        String password="root";
+       StudentRepo studentRepo=new StudentRepoImpl();
+       StudentService studentService=new StudentServiceImpl(studentRepo);
+       Controller controller=new Controller(studentService);
 
-        Connection connection;
-        try{
-            connection=DriverManager.getConnection(URL, username, password);
-            System.out.println("Connection Established ! with db ");
-        }catch(SQLException e){
-            e.printStackTrace();
-        }
+       System.out.println(controller.getAll());
     }
 }
