@@ -40,5 +40,9 @@ public class StudentRepoImpl implements StudentRepo {
         }
         return allStudentList;
     }
+    @Override
+    public Student insertStudent(String studentName, String studentEmail) {
+        
+    }
     
 }

@@ -7,10 +7,14 @@ import Service.StudentService;
 
 public class Controller {
     private StudentService studentService;
+
     public Controller(StudentService studentService) {
         this.studentService = studentService;
     }
     public List<Student> getAll(){
         return studentService.readAll();
+    }
+    public Student insertStudent(Student obj){
+       return studentService.addStudent(obj);
     }
 }
